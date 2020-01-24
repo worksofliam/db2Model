@@ -41,6 +41,8 @@ The reason `Employee.js` is created here is because the `DEPARTMENT` table has t
   assert(SupportManager.firstnme === 'JOHN');
 ```
 
+After you have generated your Models you can easily change the class properties without affecting the way the data is retrieved - which is great if you mostly have short-name columns.
+
 ## Tests
 
 There is a simple unit test provided. The test will try to create the Db2 for i sample tables in the `SAMPLE` schema.
