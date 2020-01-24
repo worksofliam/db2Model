@@ -6,6 +6,7 @@
   "configurations": [
     {
       "type": "node",
+      "runtimeVersion": "12.9.1",
       "request": "launch",
       "name": "Launch Program",
       "skipFiles": [
@@ -16,13 +17,19 @@
     },
     {
       "type": "node",
+      "runtimeVersion": "12.9.1",
       "request": "launch",
       "name": "Launch Tests",
       "skipFiles": [
         "<node_internals>/**"
       ],
       "program": "${workspaceFolder}/test.js",
-      "args": ["sample", "department"]
+      "args": [],
+      "env": {
+        "ISYS": "seiden.iinthecloud.com",
+        "IUSER": "alan3",
+        "IPASS": "wiscon3"
+      }
     }
   ]
 }
