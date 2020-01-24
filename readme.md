@@ -8,6 +8,7 @@ db2Model will create:
 * static methods to fetch a row based on the primary or unique key
 * instance methods to fetch models based on foreign references keys
 * classes for tables referenced in foreign keys.
+* documentation for each class, instance method and static method.
 
 db2Model is using the odbc driver to connect, which must be installed onto the system running this script.
 
