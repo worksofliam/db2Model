@@ -12,7 +12,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "test.js"
+    "test": " node test.js"
   },
   "keywords": [
     "db2",

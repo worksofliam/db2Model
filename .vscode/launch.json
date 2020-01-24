@@ -13,6 +13,16 @@
       ],
       "program": "${workspaceFolder}/index.js",
       "args": ["sample", "department"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Tests",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/test.js",
+      "args": ["sample", "department"]
     }
   ]
 }
