@@ -25,7 +25,7 @@ Written to "models/Department.js".
 Written to "models/Employee.js".
 ```
 
-The reason `Employee.js` is created here is because the `DEPARTMENT` table has a the column `mgrno` which references to the `EMPLOYEE` table. It also creates `getEmployee` inside of the `Employee` class as you can see below.
+The reason `Employee.js` is created here is because the `DEPARTMENT` table has the column `mgrno` which references to the `EMPLOYEE` table. It also creates `getEmployee` inside of the `Employee` class as you can see below.
 
 ```js
   const Department = require('./models/Department.js');
