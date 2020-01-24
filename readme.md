@@ -9,6 +9,8 @@ db2Model will create:
 * instance methods to fetch models based on foreign references keys
 * classes for tables referenced in foreign keys.
 
+db2Model is using the odbc driver to connect, which must be installed onto the system running this script.
+
 ## Usage
 
 ```
