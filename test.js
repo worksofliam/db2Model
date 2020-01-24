@@ -25,7 +25,7 @@ async function start() {
   }
 
   //And also generate the models
-  await ModelGenerator.getModel("SAMPLE", "DEPARTMENT");
+  await ModelGenerator.getModel("SAMPLE", "PROJACT");
   await ModelGenerator.writeModels();
 
   const Department = require('./models/Department.js');
@@ -39,6 +39,15 @@ async function start() {
   //getEmployee returns an Employee class
   const SupportManager = await SupportDept.getEmployee();
   assert(SupportManager.firstnme === 'JOHN');
+
+  const Project = require('./models/Project.js');
+  const Projact = require('./models/Projact.js');
+
+  const MyProject = await Project.Find({PROJNAME: 'PAYROLL PROGRAMMING'});
+  assert(MyProject.projno === 'AD3111');
+
+  const ProjectActivity = await Projact.Find({PROJNO: MyProject.projno});
+  assert(ProjectActivity.length === 7);
 
   console.log('Tests pass');
 }
