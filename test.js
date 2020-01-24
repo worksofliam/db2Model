@@ -2,7 +2,6 @@
 var assert = require('assert');
 const db2 = require('./db2');
 const ModelGenerator = require('./lib/ModelGenerator');
-const Data = require('./lib/Data');
 
 console.log(`Node version is ${process.version}. At least 12.0 is required.`);
 console.log(`The following environment variabes are needed to connect: ISYS, IUSER, IPASS`);
@@ -52,7 +51,7 @@ async function start() {
   const ProjectActivity = await Projact.Find({PROJNO: MyProject.projno});
   assert(ProjectActivity.length === 7);
 
-  const JoinTest = await Data.Join(Projact, Act, {projno: 'AD3111'});
+  const JoinTest = await Projact.Join(Act, {projno: 'AD3111'});
   assert(JoinTest[4].actdesc === "DOCUMENT");
 
   console.log('Tests pass');
