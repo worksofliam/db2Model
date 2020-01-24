@@ -44,7 +44,7 @@ async function start() {
   const Project = require('./models/Project.js');
   const Projact = require('./models/Projact.js');
 
-  const MyProject = await Project.Find({PROJNAME: 'PAYROLL PROGRAMMING'});
+  const MyProject = (await Project.Find({PROJNAME: 'PAYROLL PROGRAMMING'}))[0];
   assert(MyProject.projno === 'AD3111');
 
   const ProjectActivity = await Projact.Find({PROJNO: MyProject.projno});
