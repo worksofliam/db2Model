@@ -4,14 +4,14 @@ const os = require('os');
 const path = require('path');
 
 const db2 = require('./db2');
-const Table = require('./table');
+const Table = require('./lib/table');
 
 var models = {};
 
 start();
 
 async function start() {
-  await db2.connect("Driver=IBM i Access ODBC Driver;System=seiden.iinthecloud.com;UID=ALAN3;Password=wiscon3");
+  await db2.connect("Driver=IBM i Access ODBC Driver;System=xxx;UID=xxx;Password=xxx");
   await getModel(process.argv[2], process.argv[3]);
   await writeModels();
 }
@@ -23,7 +23,6 @@ async function getModel(schema, table) {
   await currentTable.loadKeys();
   await currentTable.loadReferences();
 
-  console.log(currentTable);
   models[currentTable.name] = currentTable;
 
   for (var column of currentTable.columns) {
@@ -33,8 +32,6 @@ async function getModel(schema, table) {
       }
     }
   }
-
-  console.log('end');
 };
 
 async function writeModels() {
