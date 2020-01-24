@@ -1,48 +1,14 @@
-const util = require('util');
-const fs = require('fs');
-const os = require('os');
-const path = require('path');
 
 const db2 = require('./db2');
-const Table = require('./lib/table');
-
-var models = {};
+const ModelGenerator = require('./lib/ModelGenerator');
 
 start();
 
 async function start() {
-  await db2.connect("Driver=IBM i Access ODBC Driver;System=xxx;UID=xxx;Password=xxx");
-  await getModel(process.argv[2], process.argv[3]);
-  await writeModels();
-}
-
-async function getModel(schema, table) {
-
-  var currentTable = new Table(schema, table);
-  await currentTable.loadColumns();
-  await currentTable.loadKeys();
-  await currentTable.loadReferences();
-
-  models[currentTable.name] = currentTable;
-
-  for (var column of currentTable.columns) {
-    if (column.refersTo !== null) {
-      if (models[column.refersTo.table] === undefined) {
-        await getModel(schema, column.refersTo.table);
-      }
-    }
-  }
-};
-
-async function writeModels() {
-  const fsWrite = util.promisify(fs.writeFile);
-  const mkdir = util.promisify(fs.mkdir);
-
-  try {
-    await mkdir('tests');
-  } catch (e) {}
-
-  for (var model in models) {
-    await fsWrite(path.join('tests', models[model].getPrettyName() + '.js'), (await models[model].getClass()).join(os.EOL))
-  }
+  console.log(`The following environment variabes are needed to connect: ISYS, IUSER, IPASS`);
+  console.log(`Connecting to ${process.env['ISYS']} with ${process.env['IUSER']}.`);
+  console.log('')
+  await db2.connect(`Driver=IBM i Access ODBC Driver;System=${process.env['ISYS']};UID=${process.env['IUSER']};Password=${process.env['IPASS']}`);
+  await ModelGenerator.getModel(process.argv[2], process.argv[3]);
+  await ModelGenerator.writeModels();
 }

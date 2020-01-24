@@ -1,0 +1,23 @@
+{
+  "name": "db2models",
+  "version": "1.0.0",
+  "description": "Generate models for Db2 for i data",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "dependencies": {
+    "odbc": "^2.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test.js"
+  },
+  "keywords": [
+    "db2",
+    "ibmi"
+  ],
+  "author": "WorksOfBarry",
+  "license": "ISC"
+}
