@@ -3,6 +3,7 @@ var assert = require('assert');
 const db2 = require('./db2');
 const ModelGenerator = require('./lib/ModelGenerator');
 
+console.log(`Node version is ${process.version}. At least 12.0 is required.`);
 console.log(`The following environment variabes are needed to connect: ISYS, IUSER, IPASS`);
 switch (undefined) {
   case process.env['ISYS']: case process.env['IUSER']: case process.env['IPASS']:
