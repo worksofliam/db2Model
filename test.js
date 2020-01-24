@@ -45,13 +45,18 @@ async function start() {
   const Projact = require('./models/Projact.js');
   const Act = require('./models/Act.js');
 
+  //Find a project by name
+  /** @type {Project} */
   const MyProject = (await Project.Find({PROJNAME: 'PAYROLL PROGRAMMING'}))[0];
   assert(MyProject.projno === 'AD3111');
 
+  //Find a list of activities
   const ProjectActivity = await Projact.Find({PROJNO: MyProject.projno});
   assert(ProjectActivity.length === 7);
 
-  const JoinTest = await Projact.Join(Act, {projno: 'AD3111'});
+  //Get a list of activities, but also join to the Act table
+  //so you can also get the activity descrption
+  const JoinTest = await Projact.Join(Act, {projno: MyProject.projno});
   assert(JoinTest[4].actdesc === "DOCUMENT");
 
   console.log('Tests pass');
