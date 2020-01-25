@@ -5,8 +5,9 @@ db2Model is a model generator for Db2 for i tables. It's a simple command line t
 db2Model will create:
 
 * a class for the table specified
-* static methods to fetch a row based on the primary or unique key
+* static methods to fetch a row based on the primary or unique keys
 * instance methods to fetch models based on foreign references keys
+* instance methods to update and delete based on primary or unique keys
 * classes for tables referenced in foreign keys.
 * documentation for each class, instance method and static method.
 
