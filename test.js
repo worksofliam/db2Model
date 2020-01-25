@@ -59,5 +59,19 @@ async function start() {
   const JoinTest = await Projact.Join(Act, {projno: MyProject.projno});
   assert(JoinTest[4].actdesc === "DOCUMENT");
 
+  var UpdateTest;
+
+  UpdateTest = await Department.Get('E01');
+  assert(UpdateTest.deptname === "SUPPORT SERVICES");
+
+  UpdateTest.deptname = 'Field change test';
+  await UpdateTest.Update();
+
+  UpdateTest = await Department.Get('E01');
+  assert(UpdateTest.deptname === "Field change test");
+
+  UpdateTest.deptname = 'SUPPORT SERVICES';
+  await UpdateTest.Update();
+
   console.log('Tests pass');
 }
