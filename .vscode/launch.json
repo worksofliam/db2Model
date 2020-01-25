@@ -24,12 +24,7 @@
         "<node_internals>/**"
       ],
       "program": "${workspaceFolder}/test.js",
-      "args": [],
-      "env": {
-        "ISYS": "seiden.iinthecloud.com",
-        "IUSER": "alan3",
-        "IPASS": "wiscon3"
-      }
+      "args": []
     }
   ]
 }
