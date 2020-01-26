@@ -8,23 +8,13 @@
       "type": "node",
       "runtimeVersion": "12.9.1",
       "request": "launch",
-      "name": "Launch Program",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "program": "${workspaceFolder}/index.js",
-      "args": ["sample", "department"]
-    },
-    {
-      "type": "node",
-      "runtimeVersion": "12.9.1",
-      "request": "launch",
       "name": "Launch Tests",
       "skipFiles": [
         "<node_internals>/**"
       ],
       "program": "${workspaceFolder}/test.js",
-      "args": []
+      "args": [],
+      "envFile": "${workspaceFolder}/.env"
     }
   ]
 }
