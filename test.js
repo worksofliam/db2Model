@@ -18,9 +18,13 @@ async function start() {
   console.log('')
   await db2.connect(`Driver=IBM i Access ODBC Driver;System=${process.env['ISYS']};UID=${process.env['IUSER']};Password=${process.env['IPASS']}`);
 
+  await ModelGenerator.getMethods("QSYS");
+  await ModelGenerator.writeModels();
+
   //First we need to generate the sample data to play with
+  const QSYS = require('./models/QSYS.js');
   try {
-    await db2.executeStatement(`CALL QSYS.CREATE_SQL_SAMPLE ('SAMPLE')`);
+    await QSYS.create_sql_sample("SAMPLE");
   } catch (e) {
     console.log('Sample tables may already exist in SAMPLE schema.');
   }
