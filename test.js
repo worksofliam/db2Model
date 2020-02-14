@@ -69,13 +69,13 @@ async function start() {
   assert(UpdateTest.deptname === "SUPPORT SERVICES");
 
   UpdateTest.deptname = 'Field change test';
-  await UpdateTest.Update();
+  await UpdateTest.Update({deptname: UpdateTest.deptname});
 
   UpdateTest = await Department.Get('E01');
   assert(UpdateTest.deptname === "Field change test");
 
   UpdateTest.deptname = 'SUPPORT SERVICES';
-  await UpdateTest.Update();
+  await UpdateTest.Update({deptname: UpdateTest.deptname});
 
   console.log('Tests pass');
 }
